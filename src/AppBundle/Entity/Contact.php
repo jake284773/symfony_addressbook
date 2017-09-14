@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Contact
@@ -39,6 +40,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="telephone_number", type="string", length=50)
+     * @Assert\Regex("/^\(?0( *\d\)?){9,10}$/")
      */
     private $telephoneNumber;
 

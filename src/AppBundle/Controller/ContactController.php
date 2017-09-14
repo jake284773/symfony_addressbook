@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ContactController extends Controller
@@ -35,7 +36,7 @@ class ContactController extends Controller
 
         $form = $this->createFormBuilder($contact)
             ->add('full_name', TextType::class, ['attr' => $atrributes])
-            ->add('email', TextType::class, ['attr' => $atrributes])
+            ->add('email', EmailType::class, ['attr' => $atrributes])
             ->add('telephone_number', TextType::class, ['attr' => $atrributes])
             ->add('save', SubmitType::class, array('label' => 'Create contact', 'attr' => ['class' => 'btn btn-primary']))
             ->getForm();
@@ -46,7 +47,7 @@ class ContactController extends Controller
         {
             $contact->setFullName($form['full_name']->getData());
             $contact->setEmail($form['email']->getData());
-            $contact->setTelNum($form['telephone_number']->getData());
+            $contact->setTelephoneNumber($form['telephone_number']->getData());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
