@@ -26,6 +26,9 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="full_name", type="string", length=70)
+     * @Assert\NotNull(
+     *     message = "The full name field must not be blank."
+     * )
      */
     private $fullName;
 
@@ -33,6 +36,9 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email."
+     * )
      */
     private $email;
 
@@ -40,7 +46,14 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="telephone_number", type="string", length=50)
-     * @Assert\Regex("/^\(?0( *\d\)?){9,10}$/")
+     * @Assert\NotNull(
+     *     message = "The telephone number field must not be blank."
+     * )
+     * @Assert\Regex(
+     *      pattern = "/^\(?0( *\d\)?){9,10}$/",
+     *      match = false,
+     *      message = "Telephone number must be a valid UK phone number."
+     * )
      */
     private $telephoneNumber;
 
