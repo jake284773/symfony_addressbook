@@ -1,0 +1,21 @@
+{% extends "contact/base.html.twig" %}
+
+{% block title %}Create a new contact{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ path('contact_list') }}" class="btn btn-primary">Back to address book</a>
+        </div>
+    </div>
+{% endblock %}

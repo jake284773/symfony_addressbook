@@ -1,0 +1,34 @@
+{% extends "contact/base.html.twig" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Telephone No.</th>
+                    <th>Email Address</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.fullname }}</td>
+                        <td>{{ contact.telephone }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>
+                            <button class="btn">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('contact_create') }}" class="btn btn-primary">New contact</a>
+    </div>
+{% endblock %}
