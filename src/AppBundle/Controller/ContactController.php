@@ -12,7 +12,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class ContactController extends Controller
 {
 
-    private $formAttributes = array('class' => 'form-control' , 'style' => 'margin-bottom:15px');
+    private $formAttributes = [
+        'class' => 'form-control' ,
+        'style' => 'margin-bottom:15px'
+    ];
 
     /**
      * @Route("/", name="contact_list")
@@ -36,10 +39,15 @@ class ContactController extends Controller
         $contact = new \AppBundle\Entity\Contact();
 
         $form = $this->createFormBuilder($contact)
-            ->add('full_name', TextType::class, ['attr' => $this->formAttributes])
+            ->add('full_name', TextType::class, [
+                'attr' => $this->formAttributes])
             ->add('email', EmailType::class, ['attr' => $this->formAttributes])
-            ->add('telephone_number', TextType::class, ['attr' => $this->formAttributes])
-            ->add('save', SubmitType::class, array('label' => 'Create contact', 'attr' => ['class' => 'btn btn-primary']))
+            ->add('telephone_number', TextType::class, [
+                'attr' => $this->formAttributes])
+            ->add('save', SubmitType::class, [
+                'label' => 'Create contact',
+                'attr' => ['class' => 'btn btn-primary']
+            ])
             ->getForm();
 
         $form->handleRequest($request);
@@ -80,16 +88,22 @@ class ContactController extends Controller
             return $this->redirectToRoute('contact_list');
         }
 
-        $this->formAttributes = array(
+        $this->formAttributes = [
             'class' => 'form-control' ,
             'style' => 'margin-bottom:15px'
-        );
+        ];
 
         $form = $this->createFormBuilder($contact)
-            ->add('full_name', TextType::class, ['attr' => $this->formAttributes])
+            ->add('full_name', TextType::class, [
+                'attr' => $this->formAttributes
+            ])
             ->add('email', EmailType::class, ['attr' => $this->formAttributes])
-            ->add('telephone_number', TextType::class, ['attr' => $this->formAttributes])
-            ->add('save', SubmitType::class, array('label' => 'Save changes', 'attr' => ['class' => 'btn btn-primary']))
+            ->add('telephone_number', TextType::class, [
+                'attr' => $this->formAttributes])
+            ->add('save', SubmitType::class, [
+                'label' => 'Save changes',
+                'attr' => ['class' => 'btn btn-primary']
+            ])
             ->getForm();
 
         $form->handleRequest($request);
@@ -153,8 +167,15 @@ class ContactController extends Controller
         }
 
         $form = $this->createFormBuilder($contact)
-            ->add('delete', SubmitType::class, array('label' => 'Yes', 'attr' => ['class' => 'btn btn-danger', 'style' => 'float:left;margin-right:15px']))
-            ->add('cancel', SubmitType::class, array('label' => 'No', 'attr' => ['class' => 'btn btn-secondary']))
+            ->add('delete', SubmitType::class, [
+                'label' => 'Yes',
+                'attr' => [
+                    'class' => 'btn btn-danger',
+                    'style' => 'float:left;margin-right:15px'
+                ]
+            ])
+            ->add('cancel', SubmitType::class, [
+                'label' => 'No', 'attr' => ['class' => 'btn btn-secondary']])
             ->getForm();
 
         $form->handleRequest($request);
