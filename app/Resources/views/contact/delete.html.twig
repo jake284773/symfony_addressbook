@@ -1,6 +1,6 @@
 {% extends "contact/base.html.twig" %}
 
-{% block title %}Create a new contact{% endblock %}
+{% block title %}Are you sure you want to delete contact {{ contact.fullName }}?{% endblock %}
 
 {% block content %}
     <div class="row">
@@ -8,14 +8,6 @@
             {{ form_start(form) }}
             {{ form_widget(form) }}
             {{ form_end(form) }}
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-        <div class="col-md-6">
-            <a href="{{ path('contact_list') }}" class="btn btn-secondary">Back to address book</a>
         </div>
     </div>
 {% endblock %}

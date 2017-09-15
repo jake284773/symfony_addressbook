@@ -1,0 +1,27 @@
+{% extends "contact/base.html.twig" %}
+
+{% block title %}Contact: {{ contact.fullname }} &mdash; <a href="{{ path('contact_edit', {'id': contact.id}) }}" class="btn btn-dark">Edit</a>{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+
+            <ul class="list-group">
+                <li class="list-group-item">Email: {{ contact.email }}</li>
+                <li class="list-group-item">
+                    Telephone number: {{ contact.telephoneNumber }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr>
+
+            <a href="{{ path('contact_list') }}" class="btn btn-primary">
+                Back to contacts list
+            </a>
+        </div>
+    </div>
+{% endblock %}

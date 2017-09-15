@@ -1,6 +1,6 @@
 {% extends "contact/base.html.twig" %}
 
-{% block title %}Index{% endblock %}
+{% block title %}Contacts{% endblock %}
 
 {% block content %}
     <div class="col-md-8">
@@ -17,13 +17,19 @@
             <tbody>
                 {% for contact in contacts %}
                     <tr>
-                        <td>{{ contact.fullname }}</td>
+                        <td>
+                            <a href="{{ path("contact_view", {'id': contact.id}) }}">{{ contact.fullname }}</a>
+                        </td>
                         <td>{{ contact.telephoneNumber }}</td>
                         <td>{{ contact.email }}</td>
                         <td>
-                            <a href="#" class="btn btn-light">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{ path('contact_edit', {'id': contact.id}) }}" class="btn btn-light">Edit</a>
+                            <a href="{{ path('contact_delete', {'id': contact.id}) }}" class="btn btn-danger">Delete</a>
                         </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">No contacts found.</td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -49,11 +49,6 @@ class Contact
      * @Assert\NotNull(
      *     message = "The telephone number field must not be blank."
      * )
-     * @Assert\Regex(
-     *      pattern = "/^\(?0( *\d\)?){9,10}$/",
-     *      match = false,
-     *      message = "Telephone number must be a valid UK phone number."
-     * )
      */
     private $telephoneNumber;
 
